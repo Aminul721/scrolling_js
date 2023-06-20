@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>class 3 ajax index</title>
+    <link rel="stylesheet" href="css/milligram.css">
+</head>
+<body>
+
+<div class="container">
+   <div class="row">
+       <a href="class_3Create_ajax.html" class="button button-outline float-left">Create New</a>
+   </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <table>
+            <thead>
+            <tr>
+                <th>Product Name</th>
+                <th>Product Code</th>
+                <th>Unit Price</th>
+                <th>Qty</th>
+                <th>Total Price</th>
+                <th>Delete</th>
+                <th>Update</th>
+            </tr>
+            </thead>
+            <tbody id="itemList">
+            </tbody>
+        </table>
+    </div>
+
+</div>
+<script src="js/axios.min.js"></script>
+<script>
+    getList();
+    async function getList() {
+        let result = await axios.get('https://crud.teamrabbil.com/api/v1/ReadProduct');
+
+        if(result.status === 200){
+            let list = result.data['data'];
+
+            list.forEach((listItem) => {
+                document.getElementById('itemList').innerHTML+= (
+                    `<tr>
+                        <td>${listItem['productName']}</td>
+                        <td>${listItem['productCode']}</td>
+                        <td>${listItem['UnitPrice']}</td>
+                        <td>${listItem['Qty']}</td>
+                        <td>${listItem['TotalPrice']}</td>
+                        <td><button onclick="deleteItem('${listItem['_id']}')">delete</button></td>
+                        <td><button onclick="updateItem ('${listItem['_id']}')">update</button></td>
+                    </tr>`
+                )
+
+                console.log(listItem);
+            });
+
+
+            console.log(result.data);
+        }else {
+            console.log('error')
+        }
+    }
+
+
+    async function deleteItem(id) {
+        let result = await axios.get(`https://crud.teamrabbil.com/api/v1/DeleteProduct/${id}`);
+        
+        if(result.status===200){
+            alert('delete succsess');
+            document.getElementById('itemList').innerHTML = "";
+            await getList();
+        }else {
+            alert('not delete');
+        }
+    }
+
+    async function updateItem (id) {
+        window.location = `class_3Update_ajax.html?id=${id}`;
+    }
+</script>
+</body>
+</html>

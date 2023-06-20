@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>assignment module 3</title>
+    <link rel="stylesheet" href="css/milligram.css">
+</head>
+
+<body>
+
+    <div class="container">
+        <button onclick="windowDmensions()">window open</button>
+        <div class="change_text">
+            <p>Hello Ostad</p>
+            <button class="click_change_txt">click to change text</button>
+        </div>
+        <hr>
+        <br>
+
+        <div class="manipulate_class">
+            <style>
+                .highlight {
+                    background-color: yellow;
+                }
+            </style>
+
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod</p>
+            <button class="click_manipulate">click manipulate css</button>
+        </div>
+        <hr>
+        <br>
+
+        <div class="image_path">
+            <img src="" alt="" style="display: block;">
+            <button class="click_path">set img url</button>
+        </div>
+        <hr>
+        <br>
+
+        <div class="multipole_class">
+            <style>
+                .highlight {
+                    background-color: yellow;
+                }
+            </style>
+
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod</p>
+            <p>consectetur adipisicing elit, sed do eiusmod</p>
+            <p>Lorem ipsum consectetur adipisicing elit, sed do eiusmod </p>
+            <p>adipisicing elit Lorem ipsum consectetur adipisicing elit, sed do eiusmod </p>
+            <button class="click_multipole">click manipulate css</button>
+        </div>
+        <hr>
+        <br>
+
+
+        <style>
+            .valid_style span,
+            .error_style span {
+                margin-bottom: 12px;
+                font-size: 14px;
+                line-height: 17px;
+                font-weight: 400;
+                display: block;
+            }
+            .valid_style span { color: green; }
+            .error_style span { color: #f00; } 
+        </style>
+        <div class="ostad_frm">
+            <form action="#">
+                <div class="ostad_frm_inner">
+                    <div class="ostad_frm_row">
+                        <label>Name</label>
+                        <input id="txtonly" type="text" name="name" placeholder="name..">
+                    </div>
+
+                    <div class="ostad_frm_row">
+                        <label>Email</label>
+                        <input id="emailonly" type="email" name="email" placeholder="email..">
+                    </div>
+
+                    <div class="ostad_frm_row">
+                        <label>Password</label>
+                        <input id="passwordInput" type="password" name="password" placeholder="password..">
+                    </div>
+
+                    <div class="ostad_frm_row">
+                        <label>Confirm Password</label>
+                        <input id="confirmPasswordInput" type="password" name="confpassword" placeholder="confirm password..">
+                    </div>
+
+                    <div id="infoMessage"></div>
+
+                    <div class="ostd_frm_submit">
+                        <button id="ostd_submit_btn">Submit</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <div class="onorder_list_wrap"></div>
+        <div class="multiple_pra_wrap">
+            <style>
+              .specific_0,
+              .specific_1,
+              .specific_2,
+              .specific_3 { color: #f00; }
+            </style>
+            <p class="multiple_pra">This is the pragraph 1</p>
+            <p class="multiple_pra">This is the pragraph 2</p>
+            <p class="multiple_pra">This is the pragraph 3</p>
+            <p class="multiple_pra">This is the pragraph 4</p>
+        </div>
+
+        <img id="logoimg" src="images/logoostad.png" onmouseover="changeImage('images/logo-nederlandseloterij-colour-1.png')" onmouseout="restoreImage('images/logoostad.png')">
+    </div>
+    <script>
+
+
+    //1
+    let date = new Date("2023-06-19");
+    const weekday = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+    let dayIndex = date.getDay();
+    let day = weekday[dayIndex];
+    console.log(day);
+
+    //2
+    function squareRootSumOfSquares(numbers) {
+        var sumOfSquares = 0;
+        for (var i = 0; i < numbers.length; i++) {
+            var square = Math.pow(numbers[i], 2);
+            sumOfSquares += square;
+        }
+        var result = Math.sqrt(sumOfSquares);
+        return result;
+    }
+    var numbersRoot = [2, 3, 4, 5];
+    var result = squareRootSumOfSquares(numbers);
+    console.log(result);
+
+    //3
+    function isPrimeNum(priceNum) {
+        if (priceNum <= 1){
+            return false;
+        } 
+
+        if (priceNum % 2 == 0 && priceNum > 2) {
+            return false;
+        } 
+
+        const store = Math.sqrt(priceNum);
+        document.write(`This is the prime number: ${store} <br>`);
+
+        for(let i = 3; i <= store; i++) {
+          if(priceNum % i === 0) {
+            return false;
+          } 
+        }
+        return true;
+    }
+    let resultPrime = isPrimeNum(7);
+    console.log(`Is it prime: ${resultPrime}`);
+
+    //4
+    function windowDmensions() {
+        let openWin = window.open("https://www.example.com", '_blank', 'width = 800, height=600');
+    }
+    
+    //5
+    function navigatorObjFun() {
+        let appCodeName = navigator.appCodeName;
+        let appName = navigator.appName;
+        let appVersion = navigator.appVersion;
+        console.log(`This is the appCodeName: ${appCodeName} <br><br> This is the appName: ${appName} <br><br> This is the appVersion ${appVersion}`)
+    };
+    navigatorObjFun();
+
+    //6
+    function geolocationFun() {
+        navigator.geolocation.getCurrentPosition(function(currentPs){
+            let latitude = currentPs.coords.latitude;
+            let longitude = currentPs.coords.longitude;
+
+            console.log(`This is latitude: ${latitude} <br> This is longitude: ${longitude}`);
+        });
+    };
+    geolocationFun();
+
+    //7
+    document.addEventListener("click", function(event) {
+        var x = event.clientX;
+        var y = event.clientY;
+
+      // Display alert with the coordinates
+        alert("Clicked at coordinates (x: " + x + ", y: " + y + ")");
+    });
+    
+    document.addEventListener("keydown", function(event) {
+        var keyCode = event.keyCode || event.which;
+        alert("Key code: " + keyCode);
+    });
+
+    function changeImage(newSrc) {
+        var image = document.getElementById("logoimg");
+        image.src = newSrc;
+    };
+
+    function restoreImage(originalSrc) {
+        var image = document.getElementById("logoimg");
+        image.src = originalSrc;
+    };
+
+    //8
+    function changeText() {
+        let change_text = document.querySelector('.change_text p');
+
+        let click_change_txt = document.querySelector('.click_change_txt');
+        click_change_txt.addEventListener('click', clickFunction);
+
+        function clickFunction () {
+            change_text.innerText = "Change The text"
+        }
+    };
+    changeText();
+
+    //9
+    initFromValidationFun();
+    function initFromValidationFun() {
+        let ostd_submit_btn = document.querySelector('#ostd_submit_btn');
+        ostd_submit_btn.addEventListener('click', submitClickFun);
+
+        function submitClickFun(e) {
+            e.preventDefault();
+
+            let inputField = document.querySelectorAll('.ostad_frm_row input');
+            let newElemeErr = `<span>error</span>`;
+            let newElemeValid = `<span>valid</span>`;
+
+            inputField.forEach(function(el, index){
+                if (el.value === "") {
+                    el.parentElement.classList.add("error_style");
+                    el.parentElement.innerHTML += newElemeErr;
+                }else {
+                    el.parentElement.classList.add("valid_style");
+                    el.parentElement.innerHTML += newElemeValid;
+                }
+            });
+        }
+
+
+        let inputTxtonly = document.getElementById("txtonly");
+        inputTxtonly.addEventListener("input", function() {
+            let inputValue = inputTxtonly.value;
+            let filteredValue = inputValue.replace(/[^A-Za-z.]/g, '');
+            inputTxtonly.value = filteredValue;
+
+            if (!inputTxtonly.value == "") {
+              inputTxtonly.parentElement.classList.add("valid_style");
+              inputTxtonly.parentElement.innerHTML += newElemeErr;
+            }else {
+              inputTxtonly.parentElement.classList.remove("valid_style");
+            }
+        });
+
+
+        var emailInput = document.getElementById("emailonly");
+        emailInput.addEventListener("input", function() {
+            var email = emailInput.value;
+            var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            var isValidEmail = emailPattern.test(email);
+
+            if (isValidEmail) {
+              emailInput.parentElement.classList.add("valid_style");
+            }else {
+              emailInput.parentElement.classList.remove("valid_style");
+            }
+        });
+
+
+        var passwordInput = document.getElementById("passwordInput");
+        var confirmPasswordInput = document.getElementById("confirmPasswordInput");
+        var infoMessage = document.getElementById("infoMessage");
+
+        confirmPasswordInput.addEventListener("input", function() {
+            var password = passwordInput.value;
+            var confirmPassword = confirmPasswordInput.value;
+            var isValidPassword = validatePassword(password);
+            var passwordsMatch = password === confirmPassword;
+
+            if (isValidPassword == password) {
+                console.log('ais')
+            }else{
+                console.log('dgf')
+            }
+
+            if (!passwordsMatch) {
+                infoMessage.textContent = "Passwords do not match";
+            } else {
+                infoMessage.textContent = "Match pass";
+            }
+        });
+
+        function validatePassword(password) {
+            var passwordPattern = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$/;
+            return passwordPattern.test(password);
+        }
+
+    };
+
+    //10
+    function manipulateClass() {
+        let manipulate_class = document.querySelector('.manipulate_class p');
+        let click_manipulate = document.querySelector('.click_manipulate');
+        click_manipulate.addEventListener('click', ClassFunction);
+
+        function ClassFunction() {
+            manipulate_class.classList.add("highlight");
+        }
+    };
+    manipulateClass ();
+
+    //11
+    function unOrderFun(fiveList) {
+      let creatUL = document.createElement('ul');
+      creatUL.className = 'unorder_list';
+      document.querySelector('.onorder_list_wrap').appendChild(creatUL);
+
+      for (var i = 1; i <= fiveList; i++) {
+        let creatLi = document.createElement('li');
+        creatLi.textContent = `This is the unorder list: ${i}`;
+        creatUL.appendChild(creatLi);
+      }
+    };
+    unOrderFun(5);
+
+    //12
+    function imgPath() {
+        let click_path = document.querySelector('.click_path');
+        click_path.addEventListener('click', setImgPath);
+        function setImgPath() {
+            let image_path = document.querySelector(".image_path img").setAttribute("src", "https://cdn.ostad.app/public/upload/2022-11-27T06-52-05.802Z-logo%20ostad.png");
+        }
+    };
+    imgPath();
+
+
+
+    //13
+    function multiplePra() {
+        let pragraph = document.querySelectorAll('.multiple_pra');
+
+        pragraph.forEach(function(el, index){
+            let defferent = el.classList.add(`specific_${index}`);
+        });
+    };
+    multiplePra();
+    </script>
+</body>
+
+</html>

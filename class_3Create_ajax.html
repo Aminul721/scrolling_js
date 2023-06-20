@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>class 3 ajax index</title>
+    <link rel="stylesheet" href="css/milligram.css">
+</head>
+<body>
+
+<div class="container">
+    <div class="row">
+        <div class="column">
+            <label for="productName">product Name</label>
+            <input type="text" id="productName" placeholder="product name">
+
+            <label for="productCode">product code</label>
+            <input type="text" id="productCode" placeholder="product code">
+
+            <label for="unitPrice">Unit Price</label>
+            <input type="text" id="unitPrice" placeholder="product code">
+
+            <label for="qty">Qty</label>
+            <input type="text" id="qty" placeholder="Qty">
+
+            <label for="TotalPrice">total price</label>
+            <input type="text" id="TotalPrice" placeholder="total price">
+
+            <button onclick="createItem()">create</button>
+        </div>
+    </div>
+
+</div>
+<script src="js/axios.min.js"></script>
+<script>
+    async function createItem(){
+        let productName = document.getElementById('productName').value;
+        let productCode = document.getElementById('productCode').value;
+        let unitPrice = document.getElementById('unitPrice').value;
+        let qty = document.getElementById('qty').value;
+        let totalPrice = document.getElementById('TotalPrice').value;
+
+
+        let updateOBJ = {
+            "ProductName":productName,
+            "ProductCode":productCode,
+            "Qty":qty,
+            "TotalPrice":totalPrice,
+            "UnitPrice":unitPrice
+        }
+
+        let result = await axios.post(`https://crud.teamrabbil.com/api/v1/CreateProduct`, updateOBJ);
+
+        if(result.status==200){
+            alert('created');
+            window.location.href = `class_3Index_ajax.html`;
+        }else {
+            alert('error')
+        }
+    }
+</script>
+</body>
+</html>
